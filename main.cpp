@@ -3,8 +3,6 @@
 #include <cstdlib>
 using namespace std;
 
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
-
 class Goat {
         private:
         int age;
@@ -21,6 +19,10 @@ class Goat {
             color = colors[rand() % 15];
         }
         Goat(int a, string n, string c)     { age = a; name = n; color = c; }
+
+        int getAge() const        { return age; }
+        string getName() const    { return name; }
+        string getColor() const   { return color; }
 };
 
 class DoublyLinkedList {
@@ -72,7 +74,8 @@ public:
             return;
         }
         while (current) {
-            cout << current->data << " ";
+            cout << "Forward:\n";
+            cout << current->data.getName() << " (" << current->data.getColor() << ", " << current->data.getAge() << ")"; 
             current = current->next;
         }
         cout << endl;
@@ -80,9 +83,12 @@ public:
 
     void print_reverse() {
         Node* current = tail;
-        if (!current) return;
+        if (!current) {
+            cout << "List is empty.\n";
+            return;
+        }
         while (current) {
-            cout << current->data << " ";
+            cout << current->data.getName() << " (" << current->data.getColor() << ", " << current->data.getAge() << ")"; 
             current = current->prev;
         }
         cout << endl;
@@ -107,6 +113,9 @@ int main() {
         Goat temp;
         list.push_back(temp);
     }
+
+    list.print();
+    list.print_reverse();
 
     return 0;
 }
