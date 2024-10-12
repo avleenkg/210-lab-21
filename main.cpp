@@ -74,8 +74,7 @@ public:
             return;
         }
         while (current) {
-            cout << "Forward:\n";
-            cout << current->data.getName() << " (" << current->data.getColor() << ", " << current->data.getAge() << ")"; 
+            cout << "\t" << current->data.getName() << " (" << current->data.getColor() << ", " << current->data.getAge() << ")\n"; 
             current = current->next;
         }
         cout << endl;
@@ -88,7 +87,7 @@ public:
             return;
         }
         while (current) {
-            cout << current->data.getName() << " (" << current->data.getColor() << ", " << current->data.getAge() << ")"; 
+            cout << "\t" << current->data.getName() << " (" << current->data.getColor() << ", " << current->data.getAge() << ")\n"; 
             current = current->prev;
         }
         cout << endl;
@@ -114,7 +113,9 @@ int main() {
         list.push_back(temp);
     }
 
+    cout << "Forward:\n";
     list.print();
+    cout << "Backward:\n";
     list.print_reverse();
 
     return 0;
