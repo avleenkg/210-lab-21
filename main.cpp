@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <cstdlib>
 using namespace std;
 
@@ -11,22 +12,25 @@ class Goat {
         string color;
         string names[15] = {"Ava", "Jack", "Ben", "Gloria", "Emma", "Emily", "Landon", "Jennifer", "Emelia", "Aidan", "Alex", "Lucas", "Rory", "Sterling", "Prince"};
         string colors[15] = {"Red", "Pink", "Green", "Orange", "Yellow", "Purple", "Blue", "Brown", "Coral", "Aqua", "Beige", "Black", "White", "Gray", "Cream"};
-    
+
+        public:
         //constructors
         Goat() {
             age = rand() % (20-1+1) + 1;
+            name = names[rand() % 15];
+            color = colors[rand() % 15];
         }
-    
+        Goat(int a, string n, string c)     { age = a; name = n; color = c; }
 };
 
 class DoublyLinkedList {
 private:
     struct Node {
-        int data;
+        Goat data;
         Node* prev;
         Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
-            data = val; 
+        Node(Goat g, Node* p = nullptr, Node* n = nullptr) {
+            data = g; 
             prev = p;
             next = n;
         }
@@ -39,7 +43,7 @@ public:
     // constructor
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-    void push_back(int value) {
+    void push_back(Goat g) {
         Node* newNode = new Node(value);
         if (!tail)  // if there's no tail, the list is empty
             head = tail = newNode;
